@@ -151,8 +151,31 @@ const portfolioItems = [
 </section>
 
 <!-- Scripts de embeds -->
-<script async src="https://www.tiktok.com/embed.js"></script>
+<!-- Instagram carga normal -->
 <script async src="//www.instagram.com/embed.js"></script>
+
+<script>
+  // TikTok solo se carga cuando el grid entra en viewport
+  const grid = document.getElementById('portfolio-grid');
+  let tiktokLoaded = false;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !tiktokLoaded) {
+        tiktokLoaded = true;
+
+        const script = document.createElement('script');
+        script.src = 'https://www.tiktok.com/embed.js';
+        script.async = true;
+        document.body.appendChild(script);
+
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.1 });
+
+  if (grid) observer.observe(grid);
+</script>
 
 <script>
   const filterBtns = document.querySelectorAll('.filter-btn');
