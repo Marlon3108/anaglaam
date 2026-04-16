@@ -1,0 +1,47 @@
+---
+// src/components/Marquee.astro
+---
+
+<section class="marquee relative overflow-hidden bg-[#660005] py-5 z-10" aria-hidden="true">
+  <!-- Sombras laterales para efecto fade -->
+  <div class="absolute left-0 top-0 h-full w-24 z-10
+              bg-gradient-to-r from-[#660005] to-transparent pointer-events-none"></div>
+  <div class="absolute right-0 top-0 h-full w-24 z-10
+              bg-gradient-to-l from-[#660005] to-transparent pointer-events-none"></div>
+
+  <!-- Track -->
+  <div class="flex whitespace-nowrap" style="animation: marquee 28s linear infinite;">
+    {Array(2).fill(null).map(() => (
+      <div class="flex items-center shrink-0">
+        {[
+          { icon: '💄', label: 'MAKEUP' },
+          { icon: '🧴', label: 'SKINCARE' },
+          { icon: '💅', label: 'NAILS' },
+          { icon: '🌀', label: 'CURLY HAIR' },
+          { icon: '👗', label: 'MODA' },
+          { icon: '📦', label: 'UNBOXING' },
+          { icon: '✨', label: 'UGC CREATOR' },
+          { icon: '📍', label: 'CALI, COLOMBIA' },
+          { icon: '🎬', label: 'CONTENIDO AUTÉNTICO' },
+          { icon: '🤝', label: 'MARCAS QUE CONFÍAN' },
+        ].map(({ icon, label }) => (
+          <span class="inline-flex items-center gap-3 mx-6">
+            <span class="font-bebas text-[#FAF4D4] text-lg tracking-[0.2em]">{label}</span>
+            <span class="text-[#DF8F9C] text-base">{icon}</span>
+            <span class="text-[#DF8F9C]/40 text-xs">◆</span>
+          </span>
+        ))}
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .marquee{
+    margin-top: 30px;
+  }
+  @keyframes marquee {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+</style>

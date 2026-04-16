@@ -1,0 +1,111 @@
+---
+// src/components/WhatIsUGC.astro
+---
+
+<section id="que-es-ugc" class="relative py-24 bg-[#1A0000] overflow-hidden">
+
+  <!-- Fondo de puntos -->
+  <div class="absolute inset-0 pointer-events-none opacity-[0.06]" aria-hidden="true"
+       style="background-image: radial-gradient(#FAF4D4 1px, transparent 1px); background-size: 24px 24px;">
+  </div>
+  <div class="absolute -bottom-32 -left-32 w-[500px] h-[500px] rounded-full
+              bg-[#660005]/30 blur-[120px] pointer-events-none"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6">
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+      <!-- Izquierda: texto -->
+      <div class="flex flex-col gap-6" data-aos="fade-right">
+
+        <span class="font-inter text-xs font-semibold tracking-[0.25em] uppercase text-[#DF8F9C]">
+          ¿No sabes qué es?
+        </span>
+
+        <h2 class="font-bebas text-[#FAF4D4] leading-none"
+            style="font-size: clamp(2.8rem, 5vw, 4.5rem);">
+          ¿Qué es el<br/>
+          <span class="text-[#DF8F9C]">UGC?</span>
+        </h2>
+
+        <p class="font-inter text-[#FAF4D4]/70 leading-relaxed">
+          <strong class="text-[#FAF4D4]">User Generated Content</strong> —
+          contenido creado por personas reales, no por marcas. Es el tipo de video
+          que ves en TikTok o Instagram donde alguien muestra un producto de forma
+          natural, sin que parezca un anuncio.
+        </p>
+
+        <p class="font-inter text-[#FAF4D4]/70 leading-relaxed">
+          Las marcas usan este contenido en sus redes, en sus anuncios pagados y en
+          su página web porque <strong class="text-[#FAF4D4]">convierte mucho más
+          que la publicidad tradicional</strong>: la gente confía en personas, no en logos.
+        </p>
+
+        <!-- Stats destacados -->
+        <div class="grid grid-cols-2 gap-4 mt-2">
+          {[
+            { stat: '92%', desc: 'de consumidores confía más en UGC que en publicidad tradicional' },
+            { stat: '4×', desc: 'más probabilidad de compra al ver contenido auténtico' },
+          ].map(({ stat, desc }) => (
+            <div class="bg-[#FAF4D4]/05 border border-[#FAF4D4]/10 rounded-2xl p-5">
+              <p class="font-bebas text-[#DF8F9C] text-4xl leading-none mb-2">{stat}</p>
+              <p class="font-inter text-[#FAF4D4]/50 text-xs leading-snug">{desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Derecha: cards explicativas -->
+      <div class="flex flex-col gap-4" data-aos="fade-left" data-aos-delay="100">
+        {[
+          {
+            step: '01',
+            icon: '🤝',
+            title: 'La marca contacta a Ana',
+            desc: 'Envía el producto o brief de campaña con los objetivos de contenido.',
+          },
+          {
+            step: '02',
+            icon: '🎬',
+            title: 'Ana crea el contenido',
+            desc: 'Videos auténticos, reseñas reales y tutoriales que muestran el producto de forma natural.',
+          },
+          {
+            step: '03',
+            icon: '📲',
+            title: 'La marca lo usa donde quiera',
+            desc: 'Ads de Meta, TikTok Ads, Stories, página web — el contenido es tuyo para usar.',
+          },
+          {
+            step: '04',
+            icon: '📈',
+            title: 'Resultados reales',
+            desc: 'Mayor engagement, más confianza, mejor conversión frente a contenido corporativo.',
+          },
+        ].map(({ step, icon, title, desc }, i) => (
+          <div
+            class="flex items-start gap-4 bg-[#FAF4D4]/05 border border-[#FAF4D4]/10
+                   rounded-2xl p-5 hover:bg-[#FAF4D4]/08 hover:border-[#DF8F9C]/30
+                   transition-all duration-300 group"
+            data-aos="fade-left"
+            data-aos-delay={i * 80}
+          >
+            <div class="shrink-0 w-10 h-10 rounded-xl bg-[#660005] flex items-center
+                        justify-center font-bebas text-[#FAF4D4] text-sm
+                        group-hover:bg-[#DF8F9C] group-hover:text-[#1A0000]
+                        transition-colors duration-300">
+              {step}
+            </div>
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-lg">{icon}</span>
+                <h3 class="font-inter font-semibold text-[#FAF4D4] text-sm">{title}</h3>
+              </div>
+              <p class="font-inter text-[#FAF4D4]/50 text-xs leading-relaxed">{desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

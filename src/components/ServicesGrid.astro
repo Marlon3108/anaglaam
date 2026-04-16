@@ -1,0 +1,125 @@
+---
+// src/components/ServicesGrid.astro
+---
+
+<section id="servicios" class="relative py-24 bg-[#F2DFE3] overflow-hidden">
+
+  <div class="absolute top-0 left-0 w-[350px] h-[350px] rounded-full
+              bg-[#660005]/08 blur-[100px] pointer-events-none" aria-hidden="true"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6">
+
+    <!-- Header sección -->
+    <div class="text-center mb-16" data-aos="fade-up">
+      <span class="font-inter text-xs font-semibold tracking-[0.25em] uppercase text-[#DF8F9C]">
+        Lo que hago
+      </span>
+      <h2 class="font-bebas text-[#1A0000] mt-2 leading-none"
+          style="font-size: clamp(2.8rem, 5vw, 4.5rem);">
+        Mis <span class="text-[#660005]">Servicios</span>
+      </h2>
+      <p class="font-inter text-[#1A0000]/60 mt-3 max-w-xl mx-auto">
+        Contenido auténtico y estratégico para marcas que quieren conectar de verdad con su audiencia.
+      </p>
+    </div>
+
+    <!-- Grid de servicios -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {[
+        {
+          icon: '💄',
+          title: 'Makeup UGC',
+          desc: 'Tutoriales, reseñas y looks que muestran tus productos de forma natural y aspiracional.',
+          tags: ['Tutoriales', 'Reviews', 'Looks'],
+        },
+        {
+          icon: '🧴',
+          title: 'Skincare',
+          desc: 'Rutinas y resultados reales que generan confianza en tu marca de cuidado de piel.',
+          tags: ['Rutinas', 'Resultados', 'Before/After'],
+        },
+        {
+          icon: '💅',
+          title: 'Nail Content',
+          desc: 'Contenido visual de alta calidad para productos de uñas: esmaltes, nail art y más.',
+          tags: ['Nail Art', 'Esmaltes', 'Tendencias'],
+        },
+        {
+          icon: '🌀',
+          title: 'Curly Hair',
+          desc: 'Especialista en contenido para cabello rizado: productos, técnicas y transformaciones.',
+          tags: ['Rizos', 'Productos', 'Tips'],
+        },
+        {
+          icon: '👗',
+          title: 'Moda & Accesorios',
+          desc: 'Outfits, unboxings y hauls que presentan tu marca de forma fresca y relatable.',
+          tags: ['Outfits', 'Hauls', 'Styling'],
+        },
+        {
+          icon: '📦',
+          title: 'Unboxing',
+          desc: 'Experiencias de apertura auténticas que generan emoción y deseo de compra.',
+          tags: ['Primera impresión', 'Review', 'Reacción'],
+        },
+      ].map(({ icon, title, desc, tags }, i) => (
+        <div
+          class="group bg-white rounded-3xl p-7 border border-[#DF8F9C]/20
+                 shadow-[0_4px_20px_rgba(102,0,5,0.06)]
+                 hover:shadow-[0_12px_40px_rgba(102,0,5,0.14)]
+                 hover:-translate-y-2 transition-all duration-300"
+          data-aos="fade-up"
+          data-aos-delay={i * 80}
+        >
+          <!-- Icono -->
+          <div class="w-14 h-14 rounded-2xl bg-[#FAF4D4] flex items-center justify-center
+                      text-3xl mb-5 group-hover:bg-[#660005]
+                      transition-colors duration-300">
+            <span class="group-hover:scale-110 transition-transform duration-300 inline-block">
+              {icon}
+            </span>
+          </div>
+
+          <h3 class="font-bebas text-2xl text-[#1A0000] tracking-wide mb-2
+                     group-hover:text-[#660005] transition-colors duration-300">
+            {title}
+          </h3>
+
+          <p class="font-inter text-sm text-[#1A0000]/60 leading-relaxed mb-4">
+            {desc}
+          </p>
+
+          <!-- Tags -->
+          <div class="flex flex-wrap gap-1.5">
+            {tags.map(tag => (
+              <span class="font-inter text-[10px] font-medium text-[#660005]
+                           bg-[#660005]/08 px-2.5 py-1 rounded-full">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA central -->
+    <div class="text-center mt-14" data-aos="fade-up">
+      <p class="font-playfair italic text-[#1A0000]/60 mb-5">
+        ¿No ves exactamente lo que necesitas? Hablemos.
+      </p>
+      <a
+        href="#contacto"
+        class="inline-flex items-center gap-2 bg-[#660005] text-[#FAF4D4]
+               font-inter font-semibold px-8 py-4 rounded-full text-sm
+               hover:bg-[#1A0000] transition-all duration-300
+               hover:scale-105 active:scale-95
+               shadow-[0_4px_20px_rgba(102,0,5,0.3)]"
+      >
+        Solicitar cotización
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

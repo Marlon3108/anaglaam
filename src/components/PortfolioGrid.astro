@@ -1,0 +1,181 @@
+---
+// src/components/PortfolioGrid.astro
+
+// Ana agrega aquí sus mejores videos — solo el enlace
+const portfolioItems = [
+  {
+    type: 'tiktok',
+    url: 'https://www.tiktok.com/@anaglam8/video/7600933233651453191?is_from_webapp=1&sender_device=pc&web_id=7615670749894428167',
+    label: 'Makeup Tutorial',
+    cat: 'makeup',
+  },
+  {
+    type: 'instagram',
+    url: 'https://www.instagram.com/reel/DSnUl8TjtxY/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==',
+    label: 'Curly Hair Routine',
+    cat: 'curly',
+  },
+  {
+    type: 'tiktok',
+    url: 'https://www.tiktok.com/@anaglam8/video/7582755208661372181?is_from_webapp=1&sender_device=pc&web_id=7615670749894428167',
+    label: 'Rutina Skincare',
+    cat: 'skincare',
+  },
+  {
+    type: 'instagram',
+    url: 'https://www.instagram.com/reel/DMgeMOgv0l6/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==',
+    label: 'Curly Hair Routine',
+    cat: 'curly',
+  },
+  {
+    type: 'tiktok',
+    url: 'https://www.tiktok.com/@anaglam8/video/7508473590455520517?is_from_webapp=1&sender_device=pc&web_id=7615670749894428167',
+    label: 'Rutina Skincare',
+    cat: 'skincare',
+  },
+  {
+    type: 'instagram',
+    url: 'https://www.instagram.com/reel/DM0x5q1vmPg/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==',
+    label: 'Curly Hair Routine',
+    cat: 'curly',
+  },
+  // Agrega todos los que quieras...
+];
+---
+
+<section id="portafolio" class="relative py-24 bg-[#FAF4D4] overflow-hidden">
+  <div class="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full
+              bg-[#DF8F9C]/15 blur-[100px] pointer-events-none"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6">
+
+    <div class="text-center mb-12" data-aos="fade-up">
+      <span class="font-inter text-xs font-semibold tracking-[0.25em] uppercase text-[#DF8F9C]">
+        Mi trabajo
+      </span>
+      <h2 class="font-bebas text-[#1A0000] mt-2 leading-none"
+          style="font-size: clamp(2.8rem, 5vw, 4.5rem);">
+        Portafolio <span class="text-[#660005]">UGC</span>
+      </h2>
+      <p class="font-inter text-[#1A0000]/60 mt-3 max-w-xl mx-auto">
+        Mis mejores piezas de contenido. Haz clic para ver cada video completo.
+      </p>
+    </div>
+
+    <!-- Filtros -->
+    <div class="flex flex-wrap justify-center gap-2 mb-10" data-aos="fade-up" data-aos-delay="100">
+      {['Todos', 'Makeup', 'Skincare', 'Nails', 'Curly', 'Moda', 'Unboxing'].map((cat, i) => (
+        <button
+          class={`filter-btn font-inter text-xs font-semibold px-4 py-2 rounded-full
+                  border transition-all duration-300
+                  ${i === 0
+                    ? 'bg-[#660005] text-[#FAF4D4] border-[#660005]'
+                    : 'bg-transparent text-[#660005] border-[#660005]/30 hover:border-[#660005]'
+                  }`}
+          data-filter={cat === 'Todos' ? 'all' : cat.toLowerCase()}
+        >
+          {cat}
+        </button>
+      ))}
+    </div>
+
+    <!-- Grid de embeds -->
+    <div id="portfolio-grid"
+         class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {portfolioItems.map(({ type, url, label, cat }, i) => (
+        <div
+          class="portfolio-item bg-white rounded-3xl overflow-hidden
+                 shadow-[0_4px_20px_rgba(102,0,5,0.08)]
+                 hover:shadow-[0_12px_40px_rgba(102,0,5,0.15)]
+                 hover:-translate-y-1 transition-all duration-300"
+          data-category={cat}
+          data-aos="fade-up"
+          data-aos-delay={i * 80}
+        >
+          {type === 'tiktok' ? (
+            <div class="tiktok-wrapper w-full flex justify-center bg-black rounded-t-3xl overflow-hidden"
+                 style="min-height: 480px;">
+              <blockquote
+                class="tiktok-embed w-full"
+                cite={url}
+                data-video-id={url.split('/video/')[1]?.split('?')[0]}
+                style="max-width: 100%; min-width: 100%;"
+              >
+                <section></section>
+              </blockquote>
+            </div>
+          ) : (
+            <div class="instagram-wrapper w-full flex justify-center overflow-hidden rounded-t-3xl"
+                 style="min-height: 480px;">
+              <blockquote
+                class="instagram-media w-full"
+                data-instgrm-permalink={url}
+                data-instgrm-version="14"
+                style="max-width: 100%; min-width: 100%;"
+              >
+              </blockquote>
+            </div>
+          )}
+
+          <!-- Label inferior -->
+          <div class="px-5 py-4 flex items-center justify-between">
+            <span class="font-inter font-semibold text-sm text-[#1A0000]">{label}</span>
+            <span class={`font-inter text-[10px] font-medium px-2.5 py-1 rounded-full
+                          ${type === 'tiktok'
+                            ? 'bg-[#1A0000] text-white'
+                            : 'bg-gradient-to-r from-[#660005] to-[#DF8F9C] text-white'
+                          }`}>
+              {type === 'tiktok' ? '🎵 TikTok' : '📸 Instagram'}
+            </span>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center mt-14" data-aos="fade-up">
+      <a
+        href="#contacto"
+        class="inline-flex items-center gap-2 border-2 border-[#660005] text-[#660005]
+               font-inter font-semibold px-8 py-4 rounded-full text-sm
+               hover:bg-[#660005] hover:text-[#FAF4D4]
+               transition-all duration-300 hover:scale-105 active:scale-95"
+      >
+        ¿Te gusta lo que ves? Trabajemos juntos
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Scripts de embeds -->
+<script async src="https://www.tiktok.com/embed.js"></script>
+<script async src="//www.instagram.com/embed.js"></script>
+
+<script>
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const items      = document.querySelectorAll('.portfolio-item');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = (btn as HTMLElement).dataset.filter;
+      filterBtns.forEach(b => {
+        b.classList.remove('bg-[#660005]', 'text-[#FAF4D4]', 'border-[#660005]');
+        b.classList.add('bg-transparent', 'text-[#660005]', 'border-[#660005]/30');
+      });
+      btn.classList.add('bg-[#660005]', 'text-[#FAF4D4]', 'border-[#660005]');
+      btn.classList.remove('bg-transparent', 'border-[#660005]/30');
+
+      items.forEach(item => {
+        const el = item as HTMLElement;
+        if (filter === 'all' || el.dataset.category === filter) {
+          el.style.display = '';
+        } else {
+          el.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>

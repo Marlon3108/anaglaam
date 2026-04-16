@@ -1,0 +1,64 @@
+/* src/styles/global.css */
+@import "tailwindcss";
+
+@theme {
+  /* ─── Paleta de colores AnaGlaam ─────────────────────────── */
+  --color-primary:   #660005;
+  --color-secondary: #DF8F9C;
+  --color-cream:     #FAF4D4;
+  --color-dark:      #1A0000;
+  --color-soft:      #F2DFE3;
+  --color-white:     #FFFFFF;
+
+  /* ─── Tipografías ────────────────────────────────────────── */
+  --font-bebas:    'Bebas Neue', sans-serif;
+  --font-lobster:  'Lobster', cursive;
+  --font-playfair: 'Playfair Display', serif;
+  --font-inter:    'Inter', sans-serif;
+
+  /* ─── Animaciones ────────────────────────────────────────── */
+  --animate-marquee:     marquee 25s linear infinite;
+  --animate-shimmer:     shimmer 2.5s linear infinite;
+  --animate-fade-in-up:  fadeInUp 0.7s ease-out forwards;
+  --animate-scale-in:    scaleIn 0.5s ease-out forwards;
+  --animate-border-spin: borderSpin 3s ease infinite;
+
+  /* ─── Keyframes ──────────────────────────────────────────── */
+  @keyframes marquee {
+    0%   { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
+
+  @keyframes shimmer {
+    0%   { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+
+  @keyframes fadeInUp {
+    0%   { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scaleIn {
+    0%   { opacity: 0; transform: scale(0.95); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
+  @keyframes borderSpin {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+}
+
+/* ─── Base global ────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-dark);
+  font-family: var(--font-inter);
+  -webkit-font-smoothing: antialiased;
+}

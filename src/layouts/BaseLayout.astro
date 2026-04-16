@@ -1,0 +1,132 @@
+---
+// src/layouts/BaseLayout.astro
+import { SEO } from 'astro-seo';
+import '../styles/global.css';
+import 'aos/dist/aos.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  url?: string;
+}
+
+const {
+  title = "Ana Dávila | UGC Creator de Belleza · Cali, Colombia",
+  description = "Creadora de contenido UGC especializada en maquillaje, skincare y cuidado capilar. Venezolana en Cali. Conecta tu marca con historias reales que convierten.",
+  image = "/images/ana-davila-ugc-creator-cali-colombia.webp",
+  url = "https://anaglaam.vercel.app",
+} = Astro.props;
+
+const schemaOrg = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Ana Dávila",
+  "alternateName": "anaglaam",
+  "jobTitle": "UGC Content Creator",
+  "description": description,
+  "image": `${url}${image}`,
+  "url": url,
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Cali",
+    "addressRegion": "Valle del Cauca",
+    "addressCountry": "CO"
+  },
+  "email": "anaglaam@gmail.com",
+  "sameAs": [
+    "https://instagram.com/anaglaam",
+    "https://tiktok.com/@anaglam8"
+  ],
+  "knowsAbout": ["Maquillaje", "Skincare", "Cuidado capilar", "UGC", "Marketing de contenidos"],
+  "workLocation": {
+    "@type": "Place",
+    "name": "Cali, Colombia"
+  }
+};
+---
+
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#660005" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={url} />
+
+    <SEO
+      title={title}
+      description={description}
+      openGraph={{
+        basic: {
+          title: title,
+          type: "website",
+          image: `${url}${image}`,
+          url: url,
+        },
+        optional: {
+          description: description,
+          locale: "es_CO",
+          siteName: "Ana Dávila · UGC Creator",
+        },
+        image: {
+          alt: "Ana Dávila - UGC Creator de belleza en Cali, Colombia",
+          width: 1200,
+          height: 630,
+        },
+      }}
+      twitter={{
+        card: "summary_large_image",
+        title: title,
+        description: description,
+        image: `${url}${image}`,
+        imageAlt: "Ana Dávila - UGC Creator Cali Colombia",
+      }}
+      extend={{
+        meta: [
+          { name: "robots", content: "index, follow" },
+          { name: "googlebot", content: "index, follow" },
+          { name: "keywords", content: "ugc creator cali colombia, creadora contenido ugc belleza, micro influencer maquillaje cali, ugc creator skincare pelo rizado, contenido marcas belleza colombia, ana davila anaglaam" },
+          { name: "author", content: "Ana Dávila" },
+          { name: "geo.region", content: "CO-VAC" },
+          { name: "geo.placename", content: "Cali, Valle del Cauca, Colombia" },
+        ],
+      }}
+    />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&family=Lobster&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify(schemaOrg)} />
+
+    <!-- Preload hero image -->
+    <link
+      rel="preload"
+      as="image"
+      href="/images/ana-glaam-hero-portrait.webp"
+      fetchpriority="high"
+    />
+  </head>
+
+  <body class="bg-[#FAF4D4] text-[#1A0000] antialiased">
+    <slot />
+
+    <!-- AOS init como módulo npm — sin warnings de TypeScript -->
+    <script>
+      import AOS from 'aos';
+      AOS.init({
+        duration: 800,
+        easing: 'ease-out-cubic',
+        once: true,
+        offset: 60,
+      });
+    </script>
+  </body>
+</html>

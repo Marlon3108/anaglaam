@@ -1,0 +1,256 @@
+---
+// src/components/Hero.astro
+---
+
+<section
+  id="inicio"
+  class="relative min-h-screen flex items-center overflow-hidden bg-[#FAF4D4] pt-24 pb-8"
+>
+
+  <!-- Blobs de fondo -->
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+    <div class="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full bg-[#DF8F9C]/20 blur-[100px]"></div>
+    <div class="absolute -bottom-32 -right-32 w-[600px] h-[600px] rounded-full bg-[#660005]/10 blur-[120px]"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] rounded-full bg-[#F2DFE3]/40 blur-[80px]"></div>
+  </div>
+
+  <!-- Patrón de puntos -->
+  <div
+    class="absolute inset-0 pointer-events-none opacity-30"
+    style="background-image: radial-gradient(#DF8F9C 1px, transparent 1px); background-size: 32px 32px;"
+    aria-hidden="true"
+  ></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6 w-full">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
+
+      <!-- ── Columna texto ──────────────────────────────────── -->
+      <div class="flex flex-col justify-center order-2 lg:order-1">
+
+        <!-- Badge -->
+        <div
+          id="hero-badge"
+          class="inline-flex items-center gap-2 self-start bg-[#660005]/10
+                 border border-[#660005]/20 text-[#660005] font-inter font-medium
+                 text-xs px-4 py-2 rounded-full mb-6"
+          style="opacity: 0; transform: translateY(20px);"
+        >
+          <span class="w-2 h-2 rounded-full bg-[#660005] animate-pulse"></span>
+          UGC Creator · Cali, Colombia
+        </div>
+
+        <!-- Título -->
+        <h1
+          class="font-bebas leading-none tracking-wide text-[#1A0000] mb-4"
+          style="font-size: clamp(3.5rem, 8vw, 7rem);"
+        >
+          <span class="block hero-line" style="opacity: 0; transform: translateY(60px);">Contenido que</span>
+          <span class="block hero-line text-[#660005]" style="opacity: 0; transform: translateY(60px);">conecta.</span>
+          <span class="block hero-line" style="opacity: 0; transform: translateY(60px);">Marcas que</span>
+          <span class="block hero-line text-[#DF8F9C]" style="opacity: 0; transform: translateY(60px);">crecen.</span>
+        </h1>
+
+        <!-- Subtítulo -->
+        <p
+          id="hero-subtitle"
+          class="font-playfair italic text-[#1A0000]/70 mb-8 leading-relaxed"
+          style="font-size: clamp(1rem, 2vw, 1.25rem); opacity: 0; transform: translateY(20px);"
+        >
+          Soy Ana Dávila — venezolana en Cali, apasionada por el maquillaje,
+          skincare y el cuidado capilar. Creo videos y fotos auténticos que
+          convierten espectadores en compradores.
+        </p>
+
+        <!-- CTAs -->
+        <div
+          id="hero-ctas"
+          class="flex flex-wrap gap-4"
+          style="opacity: 0; transform: translateY(20px);"
+        >
+          <a
+            href="#portafolio"
+            class="group inline-flex items-center gap-2 bg-[#660005] text-[#FAF4D4]
+                   font-inter font-semibold px-8 py-4 rounded-full text-sm
+                   hover:bg-[#1A0000] transition-all duration-300
+                   hover:scale-105 active:scale-95
+                   shadow-[0_4px_20px_rgba(102,0,5,0.3)]
+                   hover:shadow-[0_8px_30px_rgba(102,0,5,0.4)]"
+          >
+            Ver mi portafolio
+            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300"
+                 fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+
+          <a
+            href="#contacto"
+            class="inline-flex items-center gap-2 border-2 border-[#660005] text-[#660005]
+                   font-inter font-semibold px-8 py-4 rounded-full text-sm
+                   hover:bg-[#660005] hover:text-[#FAF4D4]
+                   transition-all duration-300 hover:scale-105 active:scale-95"
+          >
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+            </svg>
+            Contáctame
+          </a>
+        </div>
+
+        <!-- Stats rápidas -->
+        <div
+          id="hero-stats"
+          class="flex gap-8 mt-10 pt-8 border-t border-[#660005]/15"
+          style="opacity: 0; transform: translateY(20px);"
+        >
+          <div>
+            <p class="font-bebas text-3xl text-[#660005] leading-none">178K</p>
+            <p class="font-inter text-xs text-[#1A0000]/60 mt-1">Views en TikTok</p>
+          </div>
+          <div>
+            <p class="font-bebas text-3xl text-[#660005] leading-none">3.67%</p>
+            <p class="font-inter text-xs text-[#1A0000]/60 mt-1">Engagement IG</p>
+          </div>
+          <div>
+            <p class="font-bebas text-3xl text-[#660005] leading-none">3.1K</p>
+            <p class="font-inter text-xs text-[#1A0000]/60 mt-1">Cuentas alcanzadas</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Columna imagen ─────────────────────────────────── -->
+      <div
+        id="hero-image-col"
+        class="relative flex justify-center lg:justify-end order-1 lg:order-2"
+        style="opacity: 0; transform: translateX(40px);"
+      >
+        <!-- Marco decorativo giratorio (detrás de la foto) -->
+        <div
+          class="absolute inset-0 m-auto w-[320px] h-[320px] md:w-[420px] md:h-[420px]
+                 rounded-full opacity-30"
+          style="background: conic-gradient(#660005, #DF8F9C, #FAF4D4, #660005);
+                 animation: heroSpin 8s linear infinite;"
+          aria-hidden="true"
+        ></div>
+
+        <!-- Foto principal -->
+        <div
+          id="hero-photo"
+          class="relative z-10 w-[300px] h-[400px] md:w-[380px] md:h-[500px]
+                 rounded-[2.5rem] overflow-hidden
+                 shadow-[0_20px_60px_rgba(102,0,5,0.25)]
+                 border-4 border-[#FAF4D4]"
+        >
+          <img
+            src="../images/ana-glaam-hero-portrait.webp"
+            alt="Ana Dávila - UGC Creator de belleza en Cali Colombia"
+            class="w-full h-full object-cover object-top"
+            loading="eager"
+            fetchpriority="high"
+            onerror="this.parentElement.innerHTML='<div class=\'w-full h-full flex flex-col items-center justify-end pb-10 bg-gradient-to-b from-[#DF8F9C]/60 via-[#F2DFE3] to-[#660005]/30\'><p class=\'font-lobster text-3xl text-[#660005]\'>anaglaam</p><p class=\'font-inter text-xs text-[#660005]/60 mt-1\'>⚠️ Verifica el nombre del archivo</p></div>'"
+          />
+        </div>
+
+        <!-- Floating card: ARRIBA DERECHA — no tapa el título -->
+        <div
+          class="absolute top-4 right-0 lg:-right-6 z-20 bg-white rounded-2xl
+                 px-4 py-3 shadow-[0_8px_30px_rgba(102,0,5,0.15)]
+                 flex items-center gap-3"
+          style="animation: floatUp 3s ease-in-out infinite;"
+        >
+          <span class="text-2xl">💄</span>
+          <div>
+            <p class="font-inter font-semibold text-xs text-[#1A0000]">Makeup UGC</p>
+            <p class="font-inter text-[10px] text-[#1A0000]/50">Contenido auténtico</p>
+          </div>
+        </div>
+
+        <!-- Floating card: ABAJO DERECHA -->
+        <div
+          class="absolute bottom-2 right-0 lg:-right-6 z-20 bg-[#660005] rounded-2xl
+                 px-4 py-3 shadow-[0_8px_30px_rgba(102,0,5,0.3)]
+                 flex items-center gap-3"
+          style="animation: floatDown 3.5s ease-in-out infinite;"
+        >
+          <span class="text-2xl">✨</span>
+          <div>
+            <p class="font-inter font-semibold text-xs text-[#FAF4D4]">Skincare & Hair</p>
+            <p class="font-inter text-[10px] text-[#FAF4D4]/70">Cali, Colombia</p>
+          </div>
+        </div>
+
+        <!-- Floating card: ABAJO IZQUIERDA -->
+        <div
+          class="absolute bottom-4 left-0 lg:-left-6 z-20 bg-[#F2DFE3] rounded-2xl
+                 px-4 py-3 shadow-[0_8px_30px_rgba(223,143,156,0.3)]
+                 flex items-center gap-2"
+          style="animation: floatUp 4s ease-in-out infinite 1s;"
+        >
+          <div class="flex -space-x-1">
+            <div class="w-5 h-5 rounded-full bg-[#DF8F9C] border-2 border-white"></div>
+            <div class="w-5 h-5 rounded-full bg-[#660005] border-2 border-white"></div>
+            <div class="w-5 h-5 rounded-full bg-[#1A0000] border-2 border-white"></div>
+          </div>
+          <p class="font-inter text-xs font-semibold text-[#1A0000]">+3K alcance/mes</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div
+    id="scroll-indicator"
+    class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+    style="opacity: 0;"
+  >
+    <div class="w-[1px] h-10 bg-gradient-to-b from-[#660005]/40 to-transparent"></div>
+  </div>
+</section>
+
+<style>
+  @keyframes heroSpin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+  @keyframes floatUp {
+    0%, 100% { transform: translateY(0px); }
+    50%      { transform: translateY(-10px); }
+  }
+  @keyframes floatDown {
+    0%, 100% { transform: translateY(0px); }
+    50%      { transform: translateY(10px); }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+
+  // Espera que el DOM esté completamente listo
+  document.addEventListener("DOMContentLoaded", () => {
+    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+    tl
+      .to("#hero-badge", {
+        opacity: 1, y: 0, duration: 0.6, delay: 0.3,
+      })
+      .to(".hero-line", {
+        opacity: 1, y: 0, skewY: 0, duration: 0.7, stagger: 0.15,
+      }, "-=0.2")
+      .to("#hero-subtitle", { opacity: 1, y: 0, duration: 0.6 }, "-=0.3")
+      .to("#hero-ctas",     { opacity: 1, y: 0, duration: 0.5 }, "-=0.3")
+      .to("#hero-stats",    { opacity: 1, y: 0, duration: 0.5 }, "-=0.2")
+      .to("#hero-image-col",{ opacity: 1, x: 0, duration: 0.9, ease: "power2.out" }, "-=1.2")
+      .to("#scroll-indicator", { opacity: 1, duration: 0.5 }, "-=0.2");
+  });
+
+  // Parallax suave en scroll
+  window.addEventListener("scroll", () => {
+    const scrollY = window.scrollY;
+    const photo = document.getElementById("hero-photo");
+    if (photo && scrollY < window.innerHeight) {
+      gsap.to(photo, { y: scrollY * 0.12, duration: 0.3, ease: "none" });
+    }
+  });
+</script>

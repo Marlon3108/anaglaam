@@ -1,0 +1,133 @@
+---
+// src/components/WhyAna.astro
+---
+
+<section id="por-que-ana" class="relative py-24 bg-[#FAF4D4] overflow-hidden">
+
+  <div class="absolute top-0 right-0 w-[350px] h-[350px] rounded-full
+              bg-[#DF8F9C]/20 blur-[100px] pointer-events-none"></div>
+  <div class="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full
+              bg-[#660005]/08 blur-[80px] pointer-events-none"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6">
+
+    <!-- Header -->
+    <div class="text-center mb-16" data-aos="fade-up">
+      <span class="font-inter text-xs font-semibold tracking-[0.25em] uppercase text-[#DF8F9C]">
+        Mi diferencial
+      </span>
+      <h2 class="font-bebas text-[#1A0000] mt-2 leading-none"
+          style="font-size: clamp(2.8rem, 5vw, 4.5rem);">
+        ¿Por qué trabajar<br/>
+        <span class="text-[#660005]">con Ana?</span>
+      </h2>
+      <p class="font-inter text-[#1A0000]/60 mt-3 max-w-xl mx-auto">
+        No soy solo una creadora de contenido. Soy tu aliada estratégica para
+        conectar con la audiencia que importa.
+      </p>
+    </div>
+
+    <!-- Grid de diferenciales -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+      {[
+        {
+          icon: '🎯',
+          title: 'Contenido que convierte',
+          desc: 'Formada en ventas en línea, entiendo que el contenido debe guiar hacia una decisión de compra — no solo entretener.',
+          color: 'from-[#660005] to-[#8B0007]',
+        },
+        {
+          icon: '🌀',
+          title: 'Especialista en rizos',
+          desc: 'Una de las pocas creadoras de habla hispana especializada en cabello rizado. Nicho altamente buscado y poco saturado.',
+          color: 'from-[#DF8F9C] to-[#C97085]',
+        },
+        {
+          icon: '🇻🇪',
+          title: 'Perspectiva bicultural',
+          desc: 'Venezolana viviendo en Cali. Conecta con dos de las audiencias más grandes de habla hispana en redes sociales.',
+          color: 'from-[#660005] to-[#DF8F9C]',
+        },
+        {
+          icon: '📦',
+          title: 'Entrega rápida',
+          desc: 'Procesos claros y tiempos de entrega respetados. Tu campaña no se queda esperando — el contenido llega listo para usar.',
+          color: 'from-[#1A0000] to-[#3D0000]',
+        },
+        {
+          icon: '✍️',
+          title: 'Derechos de uso incluidos',
+          desc: 'El contenido que creo es tuyo. Úsalo en Meta Ads, TikTok Ads, tu web, email marketing — sin costos adicionales.',
+          color: 'from-[#DF8F9C] to-[#660005]',
+        },
+        {
+          icon: '💬',
+          title: 'Comunicación directa',
+          desc: 'Sin intermediarios. Hablas directamente conmigo — feedback rápido, ajustes ágiles y relación cercana con la marca.',
+          color: 'from-[#660005] to-[#1A0000]',
+        },
+      ].map(({ icon, title, desc, color }, i) => (
+        <div
+          class="group relative bg-white rounded-3xl p-7 border border-[#DF8F9C]/20
+                 shadow-[0_4px_20px_rgba(102,0,5,0.06)]
+                 hover:shadow-[0_16px_48px_rgba(102,0,5,0.14)]
+                 hover:-translate-y-2 transition-all duration-300 overflow-hidden"
+          data-aos="fade-up"
+          data-aos-delay={i * 80}
+        >
+          <!-- Fondo decorativo hover -->
+          <div class={`absolute inset-0 bg-gradient-to-br ${color} opacity-0
+                       group-hover:opacity-[0.04] transition-opacity duration-300`}></div>
+
+          <!-- Icono -->
+          <div class="relative w-14 h-14 rounded-2xl bg-[#FAF4D4] flex items-center
+                      justify-center text-3xl mb-5
+                      group-hover:scale-110 transition-transform duration-300">
+            {icon}
+          </div>
+
+          <h3 class="relative font-bebas text-2xl text-[#1A0000] tracking-wide mb-2
+                     group-hover:text-[#660005] transition-colors duration-300">
+            {title}
+          </h3>
+
+          <p class="relative font-inter text-sm text-[#1A0000]/60 leading-relaxed">
+            {desc}
+          </p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Testimonio / quote central -->
+    <div
+      class="bg-[#660005] rounded-3xl p-10 text-center relative overflow-hidden"
+      data-aos="fade-up"
+    >
+      <div class="absolute inset-0 pointer-events-none opacity-10"
+           style="background-image: radial-gradient(#FAF4D4 1px, transparent 1px); background-size: 20px 20px;">
+      </div>
+      <div class="relative z-10">
+        <span class="font-playfair text-[#DF8F9C] text-6xl leading-none">"</span>
+        <p class="font-playfair italic text-[#FAF4D4] text-xl leading-relaxed max-w-2xl mx-auto -mt-4">
+          No creo contenido para marcas. Creo contenido para personas — que resulta
+          ser exactamente lo que las marcas necesitan.
+        </p>
+        <p class="font-inter text-[#DF8F9C] text-sm mt-4 font-semibold tracking-widest uppercase">
+          — Ana Dávila, anaglaam
+        </p>
+        <a
+          href="#contacto"
+          class="inline-flex items-center gap-2 mt-8 bg-[#FAF4D4] text-[#660005]
+                 font-inter font-semibold px-8 py-4 rounded-full text-sm
+                 hover:bg-[#DF8F9C] hover:text-[#1A0000]
+                 transition-all duration-300 hover:scale-105 active:scale-95"
+        >
+          Hablemos de tu marca
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
