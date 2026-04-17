@@ -1,5 +1,48 @@
 ---
 // src/components/BrandsCarousel.astro
+
+const brands = [
+  {
+    name: 'hi beauty',
+    logo: '/images/logos-marcas/hi-beauty-logo.webp',
+    alt: 'Logo Hi Beauty - colaboración con Ana Dávila UGC Creator',
+  },
+  {
+    name: 'NINE LESS°',
+    logo: '/images/logos-marcas/nine-less-logo.webp',
+    alt: 'Logo Nine Less - colaboración con Ana Dávila UGC Creator',
+  },
+  {
+    name: 'PROKPIL',
+    logo: '/images/logos-marcas/prokpil-logo.webp',
+    alt: 'Logo Prokpil - colaboración con Ana Dávila UGC Creator',
+  },
+  {
+    name: 'TEMU',
+    logo: '/images/logos-marcas/temu-logo.webp',
+    alt: 'Logo Temu - colaboración con Ana Dávila UGC Creator',
+  },
+  {
+    name: 'VT Cosmetics',
+    logo: '/images/logos-marcas/vt-cosmetics-logo.webp',
+    alt: 'Logo VT Cosmetics - colaboración con Ana Dávila UGC Creator',
+  },
+  {
+    name: 'Beetles Gel Polish',
+    logo: '/images/logos-marcas/beetles-gel-polish-logo.webp',
+    alt: 'Logo Beetles Gel Polish - colaboración con Ana Dávila UGC Creator',
+  },
+  {
+    name: 'AXIS-Y',
+    logo: '/images/logos-marcas/axis-y-logo.webp',
+    alt: 'Logo AXIS-Y - colaboración con Ana Dávila UGC Creator',
+  },
+  {
+    name: 'Stamped Glorious',
+    logo: '/images/logos-marcas/stamped-glorious-logo.webp',
+    alt: 'Logo Stamped Glorious - colaboración con Ana Dávila UGC Creator',
+  },
+];
 ---
 
 <section id="colaboraciones" class="relative py-20 bg-[#F2DFE3] overflow-hidden">
@@ -20,53 +63,44 @@
       </p>
     </div>
 
-    <!-- Carrusel de logos -->
+    <!-- Carrusel -->
     <div class="relative overflow-hidden" data-aos="fade-up" data-aos-delay="100">
 
       <!-- Fade laterales -->
-      <div class="absolute left-0 top-0 h-full w-20 z-10
+      <div class="absolute left-0 top-0 h-full w-24 z-10
                   bg-gradient-to-r from-[#F2DFE3] to-transparent pointer-events-none"></div>
-      <div class="absolute right-0 top-0 h-full w-20 z-10
+      <div class="absolute right-0 top-0 h-full w-24 z-10
                   bg-gradient-to-l from-[#F2DFE3] to-transparent pointer-events-none"></div>
 
-      <div class="flex" style="animation: brandsScroll 20s linear infinite;">
-        {Array(3).fill(null).map(() => (
-          <div class="flex items-center shrink-0 gap-8 px-4">
-            {[
-              { name: 'Marca Belleza 1',  emoji: '💄' },
-              { name: 'Marca Skincare 2', emoji: '🧴' },
-              { name: 'Marca Nails 3',    emoji: '💅' },
-              { name: 'Marca Hair 4',     emoji: '🌀' },
-              { name: 'Marca Moda 5',     emoji: '👗' },
-              { name: 'Marca Premium 6',  emoji: '✨' },
-            ].map(({ name, emoji }) => (
-              <div class="flex items-center gap-3 bg-white rounded-2xl px-6 py-4 shrink-0
-                          shadow-[0_2px_12px_rgba(102,0,5,0.08)]
-                          hover:shadow-[0_4px_20px_rgba(102,0,5,0.15)]
-                          hover:-translate-y-1 transition-all duration-300 group">
-                <span class="text-2xl group-hover:scale-110 transition-transform duration-300">
-                  {emoji}
-                </span>
-                <span class="font-inter font-semibold text-sm text-[#1A0000]/70
-                             group-hover:text-[#660005] transition-colors duration-300
-                             whitespace-nowrap">
-                  {name}
-                </span>
-              </div>
-            ))}
-          </div>
-        ))}
+      <!-- Track — triplicado para loop infinito suave -->
+      <div class="flex items-center gap-5 carousel-track">
+        {Array(3).fill(null).map(() =>
+          brands.map(({ name, logo, alt }) => (
+            <div class="brand-card group shrink-0">
+              <img
+                src={logo}
+                alt={alt}
+                width="80"
+                height="80"
+                loading="lazy"
+                decoding="async"
+                class="w-20 h-20 object-contain
+                       grayscale opacity-70
+                       group-hover:grayscale-0 group-hover:opacity-100
+                       transition-all duration-400"
+              />
+              <!-- Nombre debajo — visible solo en hover -->
+              <span class="absolute -bottom-6 left-1/2 -translate-x-1/2
+                           font-inter text-[10px] font-semibold text-[#660005]
+                           whitespace-nowrap opacity-0 group-hover:opacity-100
+                           transition-opacity duration-300">
+                {name}
+              </span>
+            </div>
+          ))
+        )}
       </div>
     </div>
-
-    <!--
-      📌 NOTA PARA ANA:
-      Reemplaza cada { name, emoji } con los logos reales de tus marcas:
-      { name: 'NombreMarca', logo: '/images/logos-marcas/nombre-marca-logo.webp' }
-      Y cambia el div de emoji+nombre por:
-      <img src={logo} alt={`Logo ${name} - colaboración con Ana Dávila UGC`}
-           class="h-8 w-auto object-contain grayscale group-hover:grayscale-0 transition-all" />
-    -->
 
     <!-- CTA -->
     <div class="text-center mt-14" data-aos="fade-up">
@@ -79,8 +113,10 @@
                shadow-[0_4px_20px_rgba(102,0,5,0.3)]"
       >
         Quiero ser la siguiente marca
-        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+             stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"/>
         </svg>
       </a>
     </div>
@@ -88,8 +124,38 @@
 </section>
 
 <style>
+  .carousel-track {
+    animation: brandsScroll 24s linear infinite;
+    width: max-content;
+  }
+
+  .carousel-track:hover {
+    animation-play-state: paused;
+  }
+
   @keyframes brandsScroll {
     0%   { transform: translateX(0); }
     100% { transform: translateX(-33.333%); }
+  }
+
+  .brand-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border-radius: 1rem;           /* rounded-2xl */
+    padding: 1rem;
+    width: 7rem;                   /* 112px — cuadrado uniforme */
+    height: 7rem;
+    box-shadow: 0 2px 12px rgba(102, 0, 5, 0.08);
+    transition: all 0.3s ease;
+    margin-bottom: 1.5rem;         /* espacio para el label hover */
+  }
+
+  .brand-card:hover {
+    box-shadow: 0 8px 28px rgba(102, 0, 5, 0.16);
+    transform: translateY(-4px);
   }
 </style>
